@@ -92,12 +92,15 @@ canvas.addEventListener("touchend", function(e){
  * @param e
  * @returns
  */
-canvas.addEventListener("touchmove", function(e){
-	 if(paint){
-	    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
-	    redraw();
-	  }
-});
+canvas.addEventListener("touchmove", function (e) {
+    e.preventDefault(); // Prevent scrolling when touching the canvas
+		var touch = e.touches[0];
+		var mouseEvent = new MouseEvent("mousemove", {
+			clientX: touch.clientX,
+			clientY: touch.clientY
+		});
+		canvas.dispatchEvent(mouseEvent);
+	}, false);
 
 /**
  * 鼠标按下
