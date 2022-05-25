@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script src="http://www.jq22.com/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/html2canvas-0.4.1.js"></script>
+<script type="text/javascript" src="js/jspdf.min.js"></script>
+
+<title>手写签名</title>
+
+<style type="text/css">
+
+#canvas{ }
+
+#canvasDiv{
+	border:1px dotted #000;
+	width:400px;
+	height:300px;
+}
+</style>
+
+</head>
+<body id="bb">
+<span>Firma para documentos de jassir</span>
+<br><br>
+<div id="pdfContainer" class="container" style="background-color:#fff">
+      Señores<br>
+	tal y tal<br>
+	Querido señor<br>
+	Prueba ds.smkdudjmduirdejc-...........................<br>
+	Otro Parrafor<br>
+
+	Alguna cosa etcc. etc .cetc .etc。<br>
+	<br><br>
+	<br><br>
+	<br>
+	<span>Firma:</span>
+	<br>
+	<div id="canvasDiv"></div>
+	<img  id="qmimg"  />
+</div>
+<br>
+<button id="btn_clear">Limpiar</button>
+<button id="btn_submit">Enviar</button>
+<button id="downloadPdf">Descargar Pdf</button>
+<script type="text/javascript">
+	var canvasDiv = document.getElementById('canvasDiv');
+	var canvas = document.createElement('canvas');
+	var canvasWidth = 400;
+	var canvasHeight=300;
+	var context = canvas.getContext("2d");
+</script>
+<script type="text/javascript" src="js/drawWord.js"></script>
+<script type="text/javascript">
+	/* var canvasDiv = document.getElementById('canvasDiv');
+	var canvas = document.createElement('canvas');
+	var canvasWidth = 1191;
+	var canvasHeight=670; */
+	document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+	var point = {};
+	point.notFirst = false;
+	canvas.setAttribute('width', canvasWidth);
+	canvas.setAttribute('height', canvasHeight);
+	canvas.setAttribute('id', 'canvas');
+	canvasDiv.appendChild(canvas);
+	if(typeof G_vmlCanvasManager != 'undefined') {
+		canvas = G_vmlCanvasManager.initElement(canvas);
+	}
+	
+	var clickX = new Array();
+	var clickY = new Array();
+	var clickDrag = new Array();
+	var paint;
+	var clear = document.getElementById("btn_clear");
+	var submit = document.getElementById("btn_submit");
+	clear.addEventListener("click", function(){
+		canvas.width = canvas.width;
+	});
+	submit.addEventListener("click", function(){
+		$("#qmimg").attr("src",canvas.toDataURL("image/png"));
+		$("#canvasDiv").hide();
+	});
+</script>
+
+</body>
+
+</html>
+
+
+
+
+
